@@ -1,45 +1,33 @@
 // import logo from "./logo.svg";
+import React, { useState } from "react";
+import Header from './Components/Header/Header'
+import Cart from './Components/Cart/Cart'
+import Button from "./Components/UI/Button";
 import "./App.css";
+import Products from "./Components/Products/Products";
+// import { Button } from "bootstrap";
 
 const App = () => {
-  const productsArr = [
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    },
-    {
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    },
-    {
-      title: "Blue Color",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-    },
-  ];
+
+  const[isCartOpen, setCartOpen] = useState(false)
+  const closeHandler = () => {
+    setCartOpen(false)
+  }
+  const openHandler = () => {
+    setCartOpen(true)
+  }
 
   return (
-    <div className="App">
-      {productsArr.map((product) => (
-        <div key={product.title}>
-          <h2>{product.title}</h2>
-          <p>{product.price}</p>
-          <img src={product.imageUrl} alt={product.title} />
-        </div>
-      ))}
-    </div>
+    <React.Fragment>
+      <Header onOpen={openHandler} />
+      <main className="app">
+        <Products />
+      </main>
+      {isCartOpen && <Cart onClose={closeHandler} />}
+      <Button>Open Cart</Button>
+    </React.Fragment>
   );
+  
 };
 
 export default App;

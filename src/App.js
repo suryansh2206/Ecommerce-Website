@@ -19,11 +19,11 @@ const App = () => {
 
   return (
     <React.Fragment>
+      {isCartOpen && <Cart onClose={closeHandler} />}
       <Header onOpen={openHandler} />
-      <main className="app">
+      <main>
         <Products />
       </main>
-      {isCartOpen && <Cart onClose={closeHandler} />}
       <Button>Open Cart</Button>
     </React.Fragment>
   );

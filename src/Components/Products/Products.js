@@ -1,44 +1,42 @@
+import React from "react";
+// import Button from "../UI/Button";
+import ProductItems from "./ProductsItem";
+import "./Product.css";
 
-
-const Products = () => {
-    const productsArr = [
-        {
-          title: "Colors",
-          price: 100,
-          imageUrl:
-            "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-        },
-        {
-          title: "Black and white Colors",
-          price: 50,
-          imageUrl:
-            "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-        },
-        {
-          title: "Yellow and Black Colors",
-          price: 70,
-          imageUrl:
-            "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-        },
-        {
-          title: "Blue Color",
-          price: 100,
-          imageUrl:
-            "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-        },
-      ];
-
+const Product = (props) => {
+  const PRODUCTS_ARR = [
+    {
+      id: 1,
+      title: "Colors",
+      price: 100,
+      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    },
+    {
+      id: 2,
+      title: "Black and white Colors",
+      price: 50,
+      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    },
+    {
+      id: 3,
+      title: "Yellow and Black Colors",
+      price: 70,
+      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    },
+    {
+      id: 4,
+      title: "Blue Color",
+      price: 100,
+      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    },
+  ];
   return (
-    <div>
-        {productsArr.map((product) => (
-        <div key={product.title}>
-          <h2>{product.title}</h2>
-          <p>{product.price}</p>
-          <img src={product.imageUrl} alt={product.title} />
-        </div>
-      ))}
+    <div className="products">
+      {PRODUCTS_ARR.map((item) => {
+        return <ProductItems key={Math.random() * 10} item={item} id={item.id} />;
+      })}
     </div>
-  )
+  );
 };
 
-export default Products
+export default Product;

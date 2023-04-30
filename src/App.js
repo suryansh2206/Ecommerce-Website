@@ -4,7 +4,8 @@ import Header from './Components/Header/Header'
 import Cart from './Components/Cart/Cart'
 import Button from "./Components/UI/Button";
 import "./App.css";
-import Products from "./Components/Products/Products";
+import Products from "./Components/Products/ProductsItem";
+import ContextProvider from './Store/ContextProvider'
 // import { Button } from "bootstrap";
 
 const App = () => {
@@ -18,14 +19,14 @@ const App = () => {
   }
 
   return (
-    <React.Fragment>
+    <ContextProvider>
       {isCartOpen && <Cart onClose={closeHandler} />}
       <Header onOpen={openHandler} />
       <main>
         <Products />
       </main>
       <Button>Open Cart</Button>
-    </React.Fragment>
+    </ContextProvider>
   );
   
 };

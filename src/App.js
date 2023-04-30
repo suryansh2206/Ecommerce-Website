@@ -4,7 +4,7 @@ import Header from './Components/Header/Header'
 import Cart from './Components/Cart/Cart'
 import Button from "./Components/UI/Button";
 import "./App.css";
-import Products from "./Components/Products/ProductsItem";
+import Products from "./Components/Products/Products";
 import ContextProvider from './Store/ContextProvider'
 // import { Button } from "bootstrap";
 
@@ -25,7 +25,7 @@ const App = () => {
       <main>
         <Products />
       </main>
-      <Button>Open Cart</Button>
+      <Button onClick={openHandler}>Open Cart</Button>
     </ContextProvider>
   );
   

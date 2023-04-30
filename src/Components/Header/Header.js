@@ -13,7 +13,7 @@ const Header = (props) => {
   return (
     <Fragment>
       <div className="container">
-        <ul className="header-items">6
+        <ul className="header-items">
           <li>Home</li>
           <li>Store</li>
           <li>About</li>

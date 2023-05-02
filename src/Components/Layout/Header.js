@@ -15,9 +15,6 @@ const Header = (props) => {
     <Fragment>
       <div className="container">
         <ul className="header-items">
-          {/* <li>Home</li>
-          <li>Store</li>
-          <li>About</li> */}
           <NavLink activeClassName="active" className="link" to="/home">
             <>Home</>
           </NavLink>
@@ -31,7 +28,7 @@ const Header = (props) => {
             <>Contact Us</>
           </NavLink>
           <li>
-            <Button onClick={props.onOpen}>Cart {totalQuantity}</Button>
+            <Button onClick={props.onOpen} className="btn">Cart {totalQuantity}</Button>
           </li>
         </ul>
       </div>

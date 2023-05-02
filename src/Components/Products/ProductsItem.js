@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import CartContext from "../../Store/cart-context";
 import Button from "../UI/Button";
 import "./Product.css";
+import { NavLink } from "react-router-dom";
 
 const ProductItems = (props) => {
   const ctxobj = useContext(CartContext);
   const addHandler = () => {
     ctxobj.addItem({ ...props.item, quantity: 1 });
-    // console.log(ctxobj);
   };
   return (
     <ul className="product-items" id={props.id}>
@@ -24,6 +24,13 @@ const ProductItems = (props) => {
         <Button className="btn-purchase" onClick={addHandler}>
           Add to Cart
         </Button>
+        <NavLink
+          className="btn btn-purchase"
+          state={props.item}
+          to={`/product-detail/${props.id}`}
+        >
+          Check product
+        </NavLink>
       </li>
     </ul>
   );

@@ -6,13 +6,12 @@ import Cart from "./Components/Cart/Cart";
 import Button from "./Components/UI/Button";
 import "./App.css";
 import Products from "./Components/Products/Products";
+import ProductsPage from "./Components/Products/ProductsPage";
 import ContextProvider from "./Store/ContextProvider";
 import { Route, Routes } from "react-router-dom";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import ContactUs from "./Pages/ContactUs";
-// import Store from './Pages/'
-// import { Button } from "bootstrap";
 
 const App = () => {
   const [isCartOpen, setCartOpen] = useState(false);
@@ -28,6 +27,7 @@ const App = () => {
       {isCartOpen && <Cart onClose={closeHandler} />}
       <Header onOpen={openHandler} />
       <Routes>
+      <Route path="/product-detail/:id" element={<ProductsPage />} />
       <Route path="/home" element={<Home />} />
         {/* <Route path="/store" /> */}
         <Route

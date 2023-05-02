@@ -10,6 +10,8 @@ import ContextProvider from "./Store/ContextProvider";
 import { Route, Routes } from "react-router-dom";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
+import ContactUs from "./Pages/ContactUs";
+// import Store from './Pages/'
 // import { Button } from "bootstrap";
 
 const App = () => {
@@ -26,7 +28,8 @@ const App = () => {
       {isCartOpen && <Cart onClose={closeHandler} />}
       <Header onOpen={openHandler} />
       <Routes>
-        <Route path="/home" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+        {/* <Route path="/store" /> */}
         <Route
           path="/"
           element={
@@ -39,6 +42,7 @@ const App = () => {
           }
         />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUs />} />
       </Routes>
       <Footer />
     </ContextProvider>

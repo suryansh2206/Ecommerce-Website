@@ -27,6 +27,9 @@ const Header = (props) => {
           <NavLink activeClassName="active" className="link" to="/contact">
             <>Contact Us</>
           </NavLink>
+          <NavLink activeClassName="active" className="link" to="/auth">
+            <>Log In</>
+          </NavLink>
           <li>
             <Button onClick={props.onOpen} className="btn">Cart {totalQuantity}</Button>
           </li>
@@ -36,6 +39,7 @@ const Header = (props) => {
         <h1>Ecommerce Store</h1>
       </div>
     </Fragment>
+    
   );
 };
 

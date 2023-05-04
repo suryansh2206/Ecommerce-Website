@@ -12,6 +12,7 @@ import { Route, Routes } from "react-router-dom";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import ContactUs from "./Pages/ContactUs";
+import AuthForm from "./Components/Auth/AuthForm";
 
 const App = () => {
   const [isCartOpen, setCartOpen] = useState(false);
@@ -43,6 +44,7 @@ const App = () => {
         />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/auth" element={<AuthForm />} />
       </Routes>
       <Footer />
     </ContextProvider>

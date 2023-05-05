@@ -1,5 +1,4 @@
-// import logo from "./logo.svg";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "./Components/Layout/Header";
 import Footer from "./Components/Layout/Footer";
 import Cart from "./Components/Cart/Cart";
@@ -13,8 +12,11 @@ import About from "./Pages/About";
 import Home from "./Pages/Home";
 import ContactUs from "./Pages/ContactUs";
 import AuthForm from "./Components/Auth/AuthForm";
+import AuthContext from "./Store/auth-context";
+import StartingPage from "./Pages/StartingPage";
 
 const App = () => {
+  const authCtx = useContext(AuthContext);
   const [isCartOpen, setCartOpen] = useState(false);
   const closeHandler = () => {
     setCartOpen(false);
@@ -28,11 +30,12 @@ const App = () => {
       {isCartOpen && <Cart onClose={closeHandler} />}
       <Header onOpen={openHandler} />
       <Routes>
-      <Route path="/product-detail/:id" element={<ProductsPage />} />
-      <Route path="/home" element={<Home />} />
+        <Route path="/" element={<StartingPage />} />
+        <Route path="/product-detail/:id" element={<ProductsPage />} />
+        <Route path="/home" element={<Home />} />
         {/* <Route path="/store" /> */}
         <Route
-          path="/"
+          path="/store"
           element={
             <>
               <main>

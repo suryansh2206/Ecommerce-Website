@@ -18,7 +18,7 @@ const Header = (props) => {
           <NavLink activeClassName="active" className="link" to="/home">
             <>Home</>
           </NavLink>
-          <NavLink activeClassName="active" className="link" to="/">
+          <NavLink activeClassName="active" className="link" to="/store">
             <>Store</>
           </NavLink>
           <NavLink activeClassName="active" className="link" to="/about">

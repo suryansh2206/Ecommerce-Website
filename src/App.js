@@ -7,7 +7,7 @@ import "./App.css";
 import Products from "./Components/Products/Products";
 import ProductsPage from "./Components/Products/ProductsPage";
 import ContextProvider from "./Store/ContextProvider";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import ContactUs from "./Pages/ContactUs";
@@ -18,6 +18,7 @@ import StartingPage from "./Pages/StartingPage";
 const App = () => {
   const authCtx = useContext(AuthContext);
   const [isCartOpen, setCartOpen] = useState(false);
+  // const isToken = localStorage.getItem('token')
   const closeHandler = () => {
     setCartOpen(false);
   };
@@ -33,21 +34,25 @@ const App = () => {
         <Route path="/" element={<StartingPage />} />
         <Route path="/product-detail/:id" element={<ProductsPage />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/store" /> */}
         <Route
           path="/store"
           element={
-            <>
-              <main>
-                <Products />
-              </main>
-              <Button onClick={openHandler}>Open Cart</Button>
-            </>
+            authCtx.isLoggedIn ? (
+              <>
+                <main>
+                  <Products />
+                </main>
+                <Button onClick={openHandler}>Open Cart</Button>
+              </>
+            ) : (
+              <Navigate to="/auth" />
+            )
           }
         />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/auth" element={<AuthForm />} />
+        <Route path="/about/*" element={<About />} />
+        <Route path="/contact/*" element={<ContactUs />} />
+        {!authCtx.isLoggedIn && <Route path="/auth" element={<AuthForm />} />}
+        <Route path="*" element={<StartingPage />}/>
       </Routes>
       <Footer />
     </ContextProvider>

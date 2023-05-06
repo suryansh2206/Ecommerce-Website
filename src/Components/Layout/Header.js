@@ -3,9 +3,17 @@ import Button from "../UI/Button";
 import "./Header.css";
 import CartContext from "../../Store/cart-context";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../Store/auth-context";
 
 const Header = (props) => {
   const ctxobj = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+
+  const logoutHandler = () => {
+    authCtx.logOut();
+  };
+
   let totalQuantity = 0;
   const items = ctxobj.items;
   for (let i = 0; i < items.length; i++) {
@@ -27,11 +35,20 @@ const Header = (props) => {
           <NavLink activeClassName="active" className="link" to="/contact">
             <>Contact Us</>
           </NavLink>
-          <NavLink activeClassName="active" className="link" to="/auth">
-            <>Log In</>
-          </NavLink>
+          {!isLoggedIn && (
+            <NavLink activeClassName="active" className="link" to="/auth">
+              <>Log In</>
+            </NavLink>
+          )}
+          {isLoggedIn && (
+            <li>
+              <button onClick={logoutHandler}>Logout</button>
+            </li>
+          )}
           <li>
-            <Button onClick={props.onOpen} className="btn">Cart {totalQuantity}</Button>
+            <Button onClick={props.onOpen} className="btn">
+              Cart {totalQuantity}
+            </Button>
           </li>
         </ul>
       </div>
@@ -39,7 +56,6 @@ const Header = (props) => {
         <h1>Ecommerce Store</h1>
       </div>
     </Fragment>
-    
   );
 };
 

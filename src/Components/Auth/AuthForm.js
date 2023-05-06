@@ -52,6 +52,7 @@ const AuthForm = () => {
           }
         })
         .then((data) => {
+            console.log(data)
           if (data.idToken) {
             // console.log(data.idToken);
             authCtx.logIn(data.idToken);
@@ -59,6 +60,7 @@ const AuthForm = () => {
           }
         })
         .catch((err) => {
+            console.log(err)
           alert(err);
         });
     }
@@ -84,7 +86,7 @@ const AuthForm = () => {
         if (res.ok) {
         } else {
           return res.json().then((data) => {
-            // console.log(data);
+            console.log(data);
             if (data.error.message) {
               alert(data.error.message);
             }

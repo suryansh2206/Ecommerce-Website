@@ -35,3 +35,12 @@ ul.header-items li {
     color: rgb(83, 154, 182);
     text-decoration: none;
 }
+
+.button {
+    color: #fff;
+    text-decoration: none;   
+    background-color:#414141;
+    border: 1px solid #414141 ;
+    /* align-items: flex-start; */
+    font: inherit;
+}

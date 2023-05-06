@@ -117,7 +117,7 @@ const AuthForm = () => {
           {isLoading === false ? (
             <button>{isLogin ? "Login" : "Create Account"}</button>
           ) : (
-            <p>Loading....</p>
+            <p>Logging in</p>
           )}
           <button
             type="button"

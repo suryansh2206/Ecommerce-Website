@@ -6,8 +6,8 @@ const ContextProvider = (props) => {
   const [totalAmount, settotalAmount] = useState(0);
 
   const addItemHandler = (item) => {
-    const existingIndex = items.findIndex((each) => each.id === item.id);
-    const existingItem = items[existingIndex];
+    let existingIndex = items.findIndex((each) => each.id === item.id);
+    let existingItem = items[existingIndex];
     let newAmount = 0;
     let updatedItems;
     if (existingItem !== undefined) {
@@ -33,6 +33,7 @@ const ContextProvider = (props) => {
     const existingItem = items[existingIndex];
     let updatedItems,
       quantity = 0;
+      let newAmount=0;
     if (existingItem !== undefined) {
       quantity = existingItem.quantity - 1;
       if (quantity < 0 || quantity === 0) {
@@ -52,9 +53,9 @@ const ContextProvider = (props) => {
       updateItems([...items]);
     }
     items.forEach((each) => {
-      totalAmount = totalAmount - each.quantity * each.price;
+      newAmount = newAmount - each.quantity * each.price;
     });
-    settotalAmount(totalAmount);
+    settotalAmount(newAmount);
   };
 
   const cartContext = {

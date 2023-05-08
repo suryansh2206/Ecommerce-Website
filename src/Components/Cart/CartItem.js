@@ -2,10 +2,31 @@ import React, { useContext } from "react";
 import Button from "../UI/Button";
 import "./CartItem.css";
 import CartContext from "../../Store/cart-context";
+import axios from "axios";
 
 const CartItem = (props) => {
   const ctxobj = useContext(CartContext);
+  let username = localStorage.getItem("email");
+  let t = "";
+  for (let i = 0; i < username.length; i++) {
+    if (username[i] === "." || username[i] === "@") {
+      continue;
+    } else {
+      t += username[i];
+    }
+  }
+  username = t;
   const removeHandler = (item) => {
+    axios
+      .delete(
+        `https://crudcrud.com/api/c36ff7057e8a46878c99d888a7214aa2/${username}/${item._id}`
+      )
+      .then((res) => {
+        // window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     ctxobj.removeItem(item);
   };
 

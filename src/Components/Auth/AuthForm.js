@@ -55,7 +55,7 @@ const AuthForm = () => {
             console.log(data)
           if (data.idToken) {
             // console.log(data.idToken);
-            authCtx.logIn(data.idToken);
+            authCtx.logIn(data.idToken, enteredEmail);
             // history.replace('/')
           }
         })
